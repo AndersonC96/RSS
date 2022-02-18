@@ -15,9 +15,19 @@
             ]);
             $response = curl_exec($curl);// Executa o cURL
             curl_close($curl);// Fecha o cURL
-            echo "<pre>";
+            /*echo "<pre>";
             print_r($response);
             echo "</pre>";
-            exit;
+            exit;*/
+            return $this->parseXML($response);// Retorna o resultado
+        }
+        private function parseXML($response){
+            if(!strlen($response))
+                return false;// Se o tamanho da resposta for 0, retorna false
+            $this->feed = simplexml_load_string($response);// Carrega o XML
+            return true;// Retorna true
+        }
+        public function getTitle(){
+            return $this->feed->channel->title;// Retorna o título do feed
         }
     }
