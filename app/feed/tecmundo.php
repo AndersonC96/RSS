@@ -30,4 +30,16 @@
         public function getTitle(){
             return $this->feed->channel->title;// Retorna o título do feed
         }
+        public function getDescription(){
+            return $this->feed->channel->description;// Retorna a descrição do feed
+        }
+        public function getLastUpdate(){
+            return $this->feed->channel->lastBuildDate;// Retorna a data da última atualização do feed
+        }
+        public function getLogo(){
+            return $this->feed->channel->image->url;// Retorna a URL da imagem do feed
+        }
+        public function getItems(){
+            return $this->feed->channel->item;// Retorna os itens do feed
+        }
     }
